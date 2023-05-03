@@ -36,8 +36,7 @@ class PageForm(forms.ModelForm):
             else:
                 raise forms.ValidationError({'id_project': f"L'ID doit être supérieur ou égal à 1."})
         except KeyError:
-            raise forms.ValidationError({'id_project': ''}) 
-        
+            raise forms.ValidationError({'id_project': ''})
         
         try:
             file = self.cleaned_data['download_zip_images']
