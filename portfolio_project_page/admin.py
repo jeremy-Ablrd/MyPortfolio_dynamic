@@ -1,3 +1,4 @@
+import zipfile
 from django.utils.translation import gettext as _
 from django.core.exceptions import ValidationError
 from django.contrib import admin
@@ -7,9 +8,6 @@ from django.conf import settings
 import os
 import shutil
 from PIL import Image
-
-
-
 
 # Register your models here.
 
@@ -85,21 +83,18 @@ class PageAdmin(admin.ModelAdmin):
                     folder_path = os.path.join(settings.MEDIA_ROOT, old_obj.download_zip_images.name)
                     shutil.rmtree(folder_path)
                     os.remove(folder_path + '.zip')
-
-        # Dans le cas ou le zip file soit extrait avant la sauvegarde de celui ci
-        # try:
-        #     stored_id = Page.objects.get(id_project=str(obj.id_project))
-        #     if stored_id == obj.id_project:
-        #         raise (f"Cette ID correspond déjà à la page: {stored_id}.")
-        # except Page.DoesNotExist:
-        #     pass
-
         obj.save()
-        self.download_zip_images_change(obj)        # changer le path dans la base de données
-        ## -- EXTRACTION DU FICHIER ZIP -- ##
-        # path->obj.download.path, with zipfile, for(list des images), recuperer nom image
-        # self.extract_zipfile()
 
+        # -- CHANGER LE CHEMIN D'ACCES (pour faciliter la lecture pour html) -- #
+        self.download_zip_images_change(obj)        # changer le path dans la base de données
+
+        # -- EXTRACTION DU FICHIER ZIP -- #
+        obj_dl = obj.download_zip_images
+        path = os.path.join(settings.MEDIA_ROOT, obj_dl.name)
+        with zipfile.ZipFile(f"{str(path)}"+".zip", 'r') as zip_file:        # comparer au fichier form ici le fichier zip est dans le système "use path"
+            file_list = zip_file.namelist()
+            for file in file_list:
+                self.extract_zipfile(str(path), zip_file, file)
 
     # -- pour donner les permission de suppression.
     def has_delete_permission(self, request, obj=None):
