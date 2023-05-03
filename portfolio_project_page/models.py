@@ -1,9 +1,11 @@
 from django.db import models
 from django import forms
 from django.core.validators import MinValueValidator
+from django.core.exceptions import ValidationError
 from ckeditor.fields import RichTextField
 from django.utils.text import slugify
 
+ 
 # Create your models here.
 
 class Page(models.Model):
@@ -15,11 +17,11 @@ class Page(models.Model):
     description = models.TextField()
     contents = RichTextField()
     
-    slug = models.SlugField(unique=True, max_length=100, default=None)      # slug : il permet de créer l'url à partir du premier titre de la page généré.
+    slug = models.SlugField(unique=True, max_length=100, default=None)      # slug : il permet de créer l'url à partir du premier titre de la page généré.      
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title_1.split(" "))
-        self.slug += f"-id{self.id_project}"
+        self.slug += f"-id{self.id_project}"       
         super(Page, self).save(*args, **kwargs)
 
     def __str__(self):

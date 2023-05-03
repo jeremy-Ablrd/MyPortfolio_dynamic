@@ -8,21 +8,9 @@ import os
 class PageForm(forms.ModelForm):
     class Meta:
         model = Page
-        fields = '__all__'                       # ['download_zip_images', ]
+        fields = '__all__'       # ['download_zip_images', ]
 
-    # def extract_zipfile(self, path_folder, zip, image_filename):
-    #     # for read txt file (or short file) : zip_file.read(filename)
-    #     file = zip.open(image_filename, 'r')
-    #     # sauvegarde des fichiers images jpeg et png
-    #     filename = os.path.join(path_folder, image_filename)
-    #     image = Image.open(file)
-    #     if image_filename.split('.')[1] == 'jpg':
-    #         image.save(filename, format='JPEG')
-    #     image.save(filename, format='PNG')
-    #     file.close()
-
-
-# def clean permet de valider les inputs sur un formulaire quelconque dans notre cas sur le formulaire admin, le programme effectura cette fonction avant de faire une vérification automatique globale des entrées.
+    """def clean permet de valider les inputs sur un formulaire quelconque dans notre cas sur le formulaire admin, le programme effectura cette fonction avant de faire une vérification automatique globale des entrées."""
     def clean(self):
         # Id project ne prend pas de valeur None il fera automatiquement un message d'erreur.
         # Vérifier l'integrité des IDs
@@ -51,12 +39,14 @@ class PageForm(forms.ModelForm):
             raise forms.ValidationError({'id_project': ''}) 
         
         
-        # gérer les fichier zip et extraction
-        # if self.cleaned_data['download_zip_images']:
         try:
             file = self.cleaned_data['download_zip_images']
             file_name_extend = str(file)        # 'file.zip'
-            filename, ext = file_name_extend.split('.')
+            try: 
+                filename, ext = file_name_extend.split('.')
+            except ValueError:
+                # si pas d'extension c'est un dossier, fait return pas besoin de la suite
+                return
         except KeyError:
             raise forms.ValidationError({'download_zip_images': ''})        # raise str vide car Django fournit un avrtissement auto lorsque le champs de l'objet est vide.
 
