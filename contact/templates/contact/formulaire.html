@@ -1,0 +1,38 @@
+{%extends "portfolio_project_page/template_pages.html"%}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'contact/style_formulaire.css' %}">
+{% endblock %}
+
+{% block title %}Portfolio - Projects{% endblock %}
+
+{%block h1%} Portfolio {%endblock%}
+
+{%block div%}
+<section><h1>Contact</h1></section>
+{%endblock%}
+
+{%block section_project%}
+<section class="section_project">
+    <h2>Formulaire</h2>
+    <div class="formulaire">
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <div class="side">
+                {% for field in form.visible_fields|slice:":3" %}
+                {{field.label_tag}} {{field}}
+                {% endfor %}
+                
+                <input class="button" type="submit" value="Soumettre">
+            </div>
+            <div class="side">
+                {% for field in form.visible_fields|slice:"3:" %}
+                {{field.label_tag}} {{field}}
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+</section>
+{%endblock%}

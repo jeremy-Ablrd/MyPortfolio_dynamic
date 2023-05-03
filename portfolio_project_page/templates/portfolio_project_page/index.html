@@ -1,0 +1,35 @@
+{% extends "portfolio_project_page/template_pages.html" %}
+{% load static %}
+
+{% block title %}Portfolio - Projects{% endblock %}
+
+{%block h1%} Portfolio {%endblock%}
+
+<!-- div gray2 -->
+{%block div%}
+<section><h1>Portfolio</h1></section>
+{%endblock%}
+
+<!-- projects section -->
+{%block section_project%}
+<section class="section_projet">
+    <h2 >Projets</h2>
+    <div class="list_projet">
+        <ul>
+            {% for project in projects %}
+            <li>
+                <a href="{% url 'portfolio_project_page:page_generate'  page_slug=project.slug %}">
+                    <img src="{% static ''|add:project.thumbnail.url %}" alt="miniature">
+                    <div class="info_cards">
+                        <h3>{{project.title_1}}</h3>
+                        <p>
+                            {{project.description}}
+                        </p>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{%endblock%}.

@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'portfolio_project_page/nav_bar.css'%}">
+    <link rel="stylesheet" href="{% static 'portfolio_project_page/other_pages.css'%}">
+    <title>Portfolio</title>
+</head>
+<body>
+    <nav class="nav_block">
+        <h1>Abelard Jérémy</h1>
+        <div class="nav_link_page">
+            <a href="{%url 'main:index'%}" id="home-link">Accueil</a>
+            <a href="{%url 'portfolio_project_page:index'%}" id="portfolio-link">Portfolio</a>
+            <a href="{%url 'contact:contact'%}" id="contact-link">Contact</a>
+        </div>
+        <p class="button"><a href="{%static 'portfolio_project_page/documents/Template_CV.pdf'%}" target="_blank">Accéder à mon CV</a></p>
+    </nav>
+
+    <div class="gray2">
+    <section style="margin-top: 20px;">
+    <div class="zone_gray">
+        <div class="split"></div>
+        <h1>{{contents.title_1}}</h1>
+        <p><i>"{{contents.title_2}}"</i></p>
+    </div>
+    </section> 
+    </div>
+
+    <!-- <div class="table_matiere">
+    <h2>Table des matières</h2>
+        <ul>
+            <li><a href="#num1">Section 1</a></li>
+            <li><a href="#num2">Section 2</a></li>
+            <li><a href="#num3">Section 3</a></li>
+        </ul>
+    </div> -->
+    
+    <section class="section_text">
+        <div class="ligne_verticale parag_contenue_annexe">
+            <p>{{contents.description}}</p>
+        </div>
+    </section>
+
+    <section class="section_text">
+        <div class="parag_contenue_annexe">
+            {{contents.contents|safe}}
+        </div>
+    </section>
+
+    <h2 style="text-align: center; font-size: 2em;">Gallerie</h2>
+    
+    <section>
+        <ul class="gallery">
+        {% for image in images %}
+            <li><img src="{% static ''|add:image %}" alt=""></li>
+        {% endfor %}
+        </ul>
+    </section>
+   
+
+    <!-- <section>   
+        <h2>A voir aussi</h2>
+
+        <div style="text-align:center; margin-top: 30px;">
+           -<a href="portfolio-formation-python.html"><img class="portfolio" src="project2.jpg" alt="photo projet 1"></a>
+            <a style="display: block;" href="portfolio-formation-python.html"> Dévellopement Web - Python</a>-
+        </div>
+    </section> -->
+
+    <footer>
+        <iframe src="../frame-contact" frameborder="0" scrolling="no"></iframe>
+    </footer>
+
+    <script src="{%static 'portfolio_project_page/scripts.js'%}">
+    
+    </script>
+
+</body>
+</html>

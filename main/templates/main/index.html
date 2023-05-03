@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'main/style.css'%}">
+    <title>Portfolio Abelard Jérémy</title>
+
+</head>
+<body>
+    <div class="reduce_page">
+        <header class="cover"> 
+            <nav>
+                <div class="nav_link_page">
+                    <a href="{%url 'main:index'%}" class="active">Accueil</a>
+                    <a href="{%url 'portfolio_project_page:index'%}">Portfolio</a>
+                    <a href="{%url 'contact:contact'%}">Contact</a>
+                </div>
+            </nav>
+            <div class="cover_contener">
+                <img class="image_cover" src="{%static 'main/images/photo_profil_ronde.png'%}" alt="photo de profil" style="color: rebeccapurple;">
+                <h1>Abelard Jérémy</h1>
+                <p>Ingénieur R&D / Analyse de données / Mise en forme graphique / Développement web</p>
+
+                <p class="button"><a href="{%static 'main/documents/Template_CV.pdf'%}" target="_blank">Accéder à mon CV</a></p>
+                
+            </div>
+        </header>
+       <!--Section Blanche 1-->
+        <div class="quote">
+            <div class="split"></div>
+            <p><i>"Let's Change The Future Together"</i></p>
+        </div>
+
+        <section>
+           <h2>À propos de moi</h2>
+           <img class="col40" src="{%static 'main/images/photo_groupe.jpg'%}" alt="Photo 2">
+           <div class="adjust float_right col60">
+                <div class="ligne_verticale">
+                    <p style="margin: 0; text-align: justify;"> 
+                        Je suis Abelard Jérémy, 24 ans, diplômé d'un Bac+5 en <i>Gestion de l'Energie</i>, je me suis lancé, il y a maintenant deux ans dans ma première expérience de volontariat de solidarité international en tant que: chargé d'appui aux énergies renouvelables et efficacité énergétique à la <i>Seychelles Energie Commission</i>, mon organisme d'accueil.
+                        <br><br>
+                        Étant à la fin de ma mission, je recherche actuellement un poste en tant qu'ingénieur R&D dans le secteur de l'énergie renouvelable et de la transition énergétique. J'aimerais apporter mes compétences techniques: développement python, analyse et traitement de données, mise en forme graphique, etc.
+                        <br><br>
+                        La rigueur, l'autonomie, l'adaptabilité et la créativité font parties de mes "soft skills" prépondérents.
+                        Pour en savoir plus, dans la section suivante vous trouverez mon Portfolio.
+                        Pour tout échange, lien vers le <a href="{% url 'contact:contact' %}">formulaire de contact</a>. 
+                    </p>
+
+                    <p>
+                        <a style="border: 2px solid blue; padding: 1px; text-decoration: none;" href="{%static 'main/documents/Template_CV.pdf'%}" target="_blank">Télécharger mon CV</a>
+                    </p>
+                    <p>
+                        <a style="border: 2px solid blue; padding: 1px; text-decoration: none;" href="https://www.reunionnaisdumonde.com/magazine/portraits-interviews/jeremy-abelard-charge-de-soutien-aux-energies-renouvelables-aux-seychelles/">Interview: mon expérience de volontariat</a>
+                    </p>
+                </div>
+            </div>
+
+        </section>
+            <!--Section Grise -->
+        <div class="gray">
+            <section>
+                <h2>Portfolio</h2>
+                <img class='col40 float_right' src="{%static 'main/images/brochure_miniature.png'%}" alt="image projet 1">
+                <p class='col60' style="margin: 0; font-size: 28px; padding-right: 10px;">Dans cette section je vous présente les différents projets que j'ai effectué ces dernières années.</p>
+                <p class="button_1 col60" style="text-align: center; padding-top: 30px;"><a href="{%url 'portfolio_project_page:index'%}">Accéder à mon portfolio</a></p>
+            </section>
+        </div>
+        <footer>
+            <iframe src="frame-contact" frameborder="0" scrolling="no"></iframe>
+        </footer>
+    </div>
+
+
+</body>

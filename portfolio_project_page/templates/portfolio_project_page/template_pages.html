@@ -1,0 +1,41 @@
+{% load static %}
+<!-- For index->portfolio_project_page and contact form page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'portfolio_project_page/other_pages.css'%}">
+    <link rel="stylesheet" href="{% static 'portfolio_project_page/nav_bar.css'%}">
+    {% block link %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <nav class="nav_block">
+        <h1>Abelard Jérémy</h1>
+        <div class="nav_link_page">
+            <a href="{%url 'main:index'%}" id="home-link">Accueil</a>
+            <a href="{%url 'portfolio_project_page:index'%}" id="portfolio-link">Portfolio</a>
+            <a href="{%url 'contact:contact'%}" id="contact-link">Contact</a>
+        </div>
+        <p class="button"><a href="{%static 'portfolio_project_page/documents/Template_CV.pdf'%}" target="_blank">Accéder à mon CV</a></p>
+    </nav>
+
+    
+    <div class="gray2">
+    {% block div %}{% endblock %}  
+    </div>
+
+    {% block section_project %}
+    {% endblock %}
+    
+    <iframe src="/frame-contact" frameborder="0" scrolling="no"></iframe>
+
+    <script src="{%static 'portfolio_project_page/scripts.js'%}">
+    
+    </script>
+
+</body>
+</html>
