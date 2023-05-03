@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-t78xbwy4l)qu-+ixthq)0^34h*^6a3km71y%b-1bnltex)z*ps
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["jeremyabelard.pythonanywhere.com"]
 
 
 # Application definition
@@ -130,10 +131,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Media root for upload file
-MEDIA_ROOT = str(Path(BASE_DIR)) + "/portfolio_project_page/static/"
-
+MEDIA_ROOT = os.path.join(BASE_DIR, "portfolio_project_page", "static")
 
 # CKeditor
 # CKEDITOR_BASEPATH = "portfolio_project_page/ckeditor/ckeditor/"
