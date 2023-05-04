@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-t78xbwy4l)qu-+ixthq)0^34h*^6a3km71y%b-1bnltex)z*ps
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["jeremyabelard.pythonanywhere.com"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -134,7 +134,7 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Media root for upload file
-MEDIA_ROOT = os.path.join(BASE_DIR, "portfolio_project_page", "static")
+MEDIA_ROOT = os.path.join(BASE_DIR, "portfolio_project_page", "static", "media")
 
 # CKeditor
 # CKEDITOR_BASEPATH = "portfolio_project_page/ckeditor/ckeditor/"

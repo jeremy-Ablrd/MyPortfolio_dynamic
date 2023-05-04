@@ -13,8 +13,12 @@ def index(request):
 def page_generate(request, page_slug):
     contents = Page.objects.get(slug=page_slug)
     instance_dl = contents.download_zip_images
-    page_folder = instance_dl.path     # url='folder/file.ext' and path='C://...folder/file.ext'
-    image_files = [f"{instance_dl.url}" + f"/{file}" for file in os.listdir(page_folder) if os.path.isfile(os.path.join(page_folder, file))]
+    page_folder = instance_dl.url     # url='folder/file.ext' and path='C://...folder/file.ext'
+    image_files = []
+    for file in os.listdir(page_folder):
+        if os.path.isfile(os.path.join(page_folder, file)):
+            path = instance_dl.url
+            image_files.append(path)
     return render(request, 'portfolio_project_page/template_projects.html', {"contents": contents, "images": image_files})
     # raise ValidationError(f"{images_files}")
 
