@@ -1,0 +1,75 @@
+h2 {
+    font-size: 35px;
+}
+
+.section_project {
+    text-align: center;
+}
+
+.formulaire {
+    background-color: #dadada80;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 30px;
+    margin: auto;
+    width: 50%;
+}
+
+.side {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+input {
+    border: 1px solid black;
+    height: 25px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+textarea {
+   min-height: 200px;
+   min-width: 400px;
+   max-height: 200px;
+   max-width: 400px;
+
+   border: 1px solid black;
+   border-radius: 5px;
+}
+
+input.button {
+    margin: 10px;
+    border: none;
+    background-color: rgb(87, 162, 186);
+}
+
+input.button:hover{
+    border: 1px solid black;
+    color: white;
+    margin: 10px;
+}
+
+p.success_message {
+    color: green;
+    background-color: rgb(179, 216, 179);
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 50px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid green;
+}
+
+a {
+    font-size: 16px;
+    display: block;
+}
