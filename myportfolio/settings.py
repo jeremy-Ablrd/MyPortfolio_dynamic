@@ -134,7 +134,7 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Media root for upload file
-MEDIA_ROOT = os.path.join(BASE_DIR, "portfolio_project_page", "static", "media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "static", "media")
 
 # CKeditor
 # CKEDITOR_BASEPATH = "portfolio_project_page/ckeditor/ckeditor/"
