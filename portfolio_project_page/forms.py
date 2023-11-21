@@ -38,7 +38,7 @@ class PageForm(forms.ModelForm):
         except KeyError:
             raise forms.ValidationError({'id_project': ''})
         
-        try:
+        '''try:
             file = self.cleaned_data['download_zip_images']
             file_name_extend = str(file)        # 'file.zip'
             try: 
@@ -71,4 +71,4 @@ class PageForm(forms.ModelForm):
         elif ext == 'jpg' or ext == 'png':
             return
         else:
-            raise forms.ValidationError({'download_zip_images': 'Uniquement image ou fichier zip sont permisent.'})
+            raise forms.ValidationError({'download_zip_images': 'Uniquement image ou fichier zip sont permisent.'})'''

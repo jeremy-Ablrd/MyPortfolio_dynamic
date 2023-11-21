@@ -19,7 +19,7 @@
             {% for project in projects %}
             <li>
                 <a href="{% url 'portfolio_project_page:page_generate'  page_slug=project.slug %}">
-                    <img src="{% static ''|add:project.thumbnail.url %}" alt="miniature">
+                    <img src="{% static 'media/'|add:project.thumbnail.url %}" alt="miniature">
                     <div class="info_cards">
                         <h3>{{project.title_1}}</h3>
                         <p>
